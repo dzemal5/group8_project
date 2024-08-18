@@ -1,0 +1,26 @@
+recommend_caviar:
+  description: >
+    Based on the user's preferences for saltiness, richness, texture, flavor intensity,
+    dietary restrictions, and budget, recommend the most suitable caviar variety.
+    Provide a detailed description of the chosen caviar, including its origin and unique characteristics.
+  expected_output: >
+    A personalized caviar recommendation with a detailed description of its qualities and origin.
+  agent: caviar_expert
+
+pair_champagne:
+  description: >
+    For the recommended caviar, suggest the perfect champagne pairing.
+    Consider the caviar's flavor profile and the user's preferences to create a harmonious combination.
+    If no specific caviar was recommended, provide a general champagne pairing suggestion for caviar.
+  expected_output: >
+    A champagne pairing recommendation with an explanation of why it complements the chosen caviar or caviar in general.
+  agent: sommelier
+
+curate_content:
+  description: >
+    Provide exclusive content related to the recommended caviar and champagne pairing.
+    Include Jackie's expert insights, preparation tips, and the latest trends in luxury caviar dining.
+    If no specific recommendations were made, provide general luxury caviar dining insights.
+  expected_output: >
+    A curated selection of exclusive content, including expert tips and industry insights.
+  agent: content_curator
