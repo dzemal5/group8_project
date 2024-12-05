@@ -1,0 +1,52 @@
+import folium
+from folium.plugins import MarkerCluster
+import random
+
+class CaviarChatbot:
+    def __init__(self):
+        self.caviar_data = {
+            "Ossetra": {"origin": "Caspian Sea", "flavor": "nutty, buttery", "latitude": 42.0, "longitude": 48.0},
+            "Beluga": {"origin": "Caspian Sea", "flavor": "creamy, delicate", "latitude": 43.0, "longitude": 49.0},
+            # ... more caviar types
+        }
+        self.greetings = ["Welcome to the caviar tasting experience!", "Hello, caviar lover! How can I help you?"]
+        self.farewells = ["Enjoy your caviar! Come back soon.", "Goodbye! Thank you for tasting with us."]
+
+    def get_response(self, user_input):
+        user_input = user_input.lower()
+
+        if "hello" in user_input or "hi" in user_input:
+            return random.choice(self.greetings)
+        elif "goodbye" in user_input or "bye" in user_input:
+            return random.choice(self.farewells)
+        elif "caviar" in user_input:
+            caviar_type = user_input.split(" ")[-1]
+            if caviar_type in self.caviar_data:
+                return self.get_caviar_info(caviar_type)
+            else:
+                return "I don't have information about that caviar yet."
+        else:
+            return "I'm still learning about caviar. Please try asking about a specific type."
+
+    def get_caviar_info(self, caviar_type):
+        caviar = self.caviar_data[caviar_type]
+        info = f"{caviar_type} caviar is from the {caviar['origin']} and has a {caviar['flavor']} flavor."
+        if 'latitude' in caviar and 'longitude' in caviar:
+            info += "\nWould you like to see its origin on a map?"
+        return info
+
+    def show_caviar_origin(self, caviar_type):
+        # ... (same as before)
+
+# Example usage:
+chatbot = CaviarChatbot()
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "quit":
+        break
+    response = chatbot.get_response(user_input)
+    print("Chatbot:", response)   
+
+    if "map" in response:
+        map = chatbot.show_caviar_origin(caviar_type)
+        # Display the map (replace with your method)
